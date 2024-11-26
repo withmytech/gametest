@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+-->
+<html>
+    <head>
+        <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <link rel="stylesheet" href="css/index.css">
+		 <script src="js/index.js"></script>
+        <title>RPS App</title>
+    </head>
+    <body>
+       <center>
+		<div>
+			<h1>Feedback</h1>
+		</div>	
+		<br><br>
+          </center>
+		  <label><input type="radio" id="Ananymous" value="Ananymous">Ananymous</label>
+		  <br><br>
+		  <label><input type="radio" id="Named User" value="Named User">Named User</label>
+		  <br><br>
+		  <table>
+			<tr>
+				<td><p>Name:</p></td> <td><input type="text" id="Name"></td>
+			</tr>
+			<br><br>
+				<tr>
+				<td><p>eMail address:</p></td> <td><input type="text" id="emailaddress"></td>
+			</tr>
+			<tr>
+				<td><p>Which robot player type would you most likely play against</p></td>
+			</tr>
+			<tr>
+				<td>
+					<div id="radioList">
+						<select id="selectrobotplayertype">
+							<option value="0">--Choose from list--</option>
+							<option value="1">--High Roller--</option>
+							<option value="2">--Conservative--</option>
+							<option value="3">--Recreational--</option>
+						</select>
+					</div>
+				</td>
+			</center>	
+				<tr>
+				<td><p>Would you like to be a tester for the next game release?</p></td>
+				<tr>
+					<td><label><input type="radio" id="No" value="No">No</label></td> 
+				</tr>
+				<tr>	
+				<td><label><input type="radio" id="Yes" value="Yes">Yes</label></td>
+			</tr>	
+		</table>
+		<br>
+		<center>
+		<input type="button" value="Submit" onclick="ThankYou()">
+		</center>	
+	</body>
+</html>

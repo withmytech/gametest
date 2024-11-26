@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="../styles/landing.css">
+    <!-- Preload audio -->
+    <link rel="preload" href="sounds/background.mp3" as="audio">
+</head>
+<body>
+    <a href="menu.html" class="game-link"></a>
+
+    <div class="landing-container">
+        <h1 id="rock-paper-scissors" class="game-title">Rock Paper Scissors</h1>
+
+        <div class="janken-container">
+            <span class="janken-text">J</span>
+            <span class="janken-text">A</span>
+            <span class="janken-text">N</span>
+            <span class="janken-text">K</span>
+            <span class="janken-text">E</span>
+            <span class="janken-text">N</span>
+        </div>
+
+        <div class="icons-container">
+            <img src="../images/rock.png" alt="Rock" class="game-icon rock">
+            <img src="../images/paper.png" alt="Paper" class="game-icon paper">
+            <img src="../images/scissor.png" alt="Scissors" class="game-icon scissors">
+        </div>
+
+        <div class="touch-prompt">Touch anywhere to begin</div>
+    </div>
+
+    <!-- Background Music Script -->
+    <script>
+        const backgroundMusic = new Audio('sounds/background.mp3');
+        backgroundMusic.volume = 0.4;
+        backgroundMusic.loop = true;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            backgroundMusic.play()
+                .catch(err => console.log('Error playing background music:', err));
+        });
+
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                backgroundMusic.pause();
+            } else {
+                backgroundMusic.play()
+                    .catch(err => console.log('Error resuming background music:', err));
+            }
+        });
+
+        // Stop music when leaving page
+        window.addEventListener('beforeunload', function() {
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
+        });
+    </script>
+</body>
+</html>

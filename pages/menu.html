@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Menu</title>
+    <link rel="stylesheet" href="../styles/menu.css">
+</head>
+<body>
+    <div class="menu-container">
+        <h1 class="menu-title">Rock Paper Scissors</h1>
+        <div class="menu-buttons">
+            <button class="menu-button" onclick="window.location.href='game.html'">Play Game</button>
+            <button class="menu-button" onclick="showModal('rules')">Rules</button>
+            <button class="menu-button" onclick="showModal('tutorial')">Tutorial</button>
+            <button class="menu-button" onclick="window.location.href='coverpage.html'">Our CoverPage</button>
+            <button class="menu-button" onclick="window.location.href='home.html'">Return to main Menu</button>
+        </div>
+    </div>
+
+    <!-- Rules Modal -->
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="hideModal('rules')">&times;</button>
+            <h2 class="modal-title">Game Rules</h2>
+            <div class="modal-text">
+                <ul class="rules-list">
+                    <li>• Rock beats Scissors</li>
+                    <li>• Scissors beats Paper</li>
+                    <li>• Paper beats Rock</li>
+                    <li>• Win 3 rounds in a row for a special reward!</li>
+                    <li>• Each loss costs you 10 points</li>
+                    <li>• Game ends when either player runs out of points</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="hideModal('tutorial')">&times;</button>
+            <h2 class="modal-title">How to Play</h2>
+            <div class="video-container">
+                <video id="tutorialVideo" controls width="100%" height="auto">
+                    <source src="../videos/tutorial.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.style.display = 'flex';
+
+            if (type === 'tutorial') {
+                const video = document.getElementById('tutorialVideo');
+                video.currentTime = 0;
+                video.play();
+            }
+        }
+
+        function hideModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.style.display = 'none';
+
+            if (type === 'tutorial') {
+                const video = document.getElementById('tutorialVideo');
+                video.pause();
+                video.currentTime = 0;
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                const video = document.getElementById('tutorialVideo');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+                event.target.style.display = 'none';
+            }
+        };
+
+        // Save settings to localStorage
+        const soundToggle = document.getElementById('soundToggle');
+        const animationToggle = document.getElementById('animationToggle');
+
+        soundToggle.checked = localStorage.getItem('soundEnabled') === 'true';
+        animationToggle.checked = localStorage.getItem('animationsEnabled') !== 'false';
+
+        soundToggle.addEventListener('change', () => {
+            localStorage.setItem('soundEnabled', soundToggle.checked);
+        });
+
+        animationToggle.addEventListener('change', () => {
+            localStorage.setItem('animationsEnabled', animationToggle.checked);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/feedback.css">
+    <title>Feedback Form</title>
+</head>
+<body>
+    <a href="menu.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+    </a>
+
+    <div class="feedback-container">
+        <h1>Feedback</h1>
+        <form>
+            <div class="radio-group">
+                <div>
+                    <input type="radio" id="anonymous" name="userType" value="anonymous">
+                    <label for="anonymous">Anonymous</label>
+                </div>
+                <div>
+                    <input type="radio" id="namedUser" name="userType" value="namedUser">
+                    <label for="namedUser">Named User</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">eMail address:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="robotType">Which robot player type would you most likely play against?</label>
+                <select id="robotType" name="robotType">
+                    <option value="">--Choose from list--</option>
+                    <option value="highRoller">High Roller</option>
+                    <option value="conservative">Conservative</option>
+                    <option value="recreational">Recreational</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Would you like to be a tester for the next game release?</label>
+                <div class="tester-group">
+                    <div>
+                        <input type="radio" id="no" name="tester" value="no">
+                        <label for="no">No</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="yes" name="tester" value="yes">
+                        <label for="yes">Yes</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">submit</button>
+        </form>
+    </div>
+
+    <script src="../js/game.js"></script>
+        <!-- Background Music Script -->
+        <script>
+            const backgroundMusic = new Audio('sounds/background.mp3');
+            backgroundMusic.volume = 0.4;
+            backgroundMusic.loop = true;
+    
+            document.addEventListener('DOMContentLoaded', function() {
+                backgroundMusic.play()
+                    .catch(err => console.log('Error playing background music:', err));
+            });
+    
+            // Handle page visibility changes
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    backgroundMusic.pause();
+                } else {
+                    backgroundMusic.play()
+                        .catch(err => console.log('Error resuming background music:', err));
+                }
+            });
+    
+            // Stop music when leaving page
+            window.addEventListener('beforeunload', function() {
+                backgroundMusic.pause();
+                backgroundMusic.currentTime = 0;
+            });
+        </script>
+</body>
+</html>

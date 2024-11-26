@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Cover Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .cover-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+        .course-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .project-title {
+            font-size: 1.8rem;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+        .lecturer-info {
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .student-list {
+            text-align: left;
+            margin: 2rem auto;
+            width: fit-content;
+        }
+        .student-item {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .college-info {
+            margin-top: 2rem;
+            font-size: 1.4rem;
+            color: #666;
+            font-weight: bold;
+        }
+        .back-button {
+            background: #23a6d5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background: #1a8bb3;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <h1 class="course-title">Introduction to Mobile Development</h1>
+        <div class="lecturer-info">
+            <p>Lecturer: Andrei Scott</p>
+        </div>
+        <h2 class="project-title">Rock Paper Scissors Game</h2>
+       
+        <div class="student-list">
+            <div class="student-item">Vaughn Armstrong - Student ID: 234567</div>
+            <div class="student-item">Michael Welsh - Student ID: 22011473</div>
+            <div class="student-item">Dana Drummond - Student ID: 21011808</div>
+            <div class="student-item">Yannique DaCosta - Student ID: 22010595</div>
+        </div>
+        <div class="college-info">
+            <p>Portmore Community College</p>
+        </div>
+        <button class="back-button" onclick="window.location.href='menu.html'">Return to Menu</button>
+    </div>
+</body>
+</html>

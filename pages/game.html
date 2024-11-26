@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="../styles/game.css">
+    <!-- Preload audio -->
+    <link rel="preload" href="../sounds/background.mp3" as="audio">
+    <link rel="preload" href="../sounds/winner.mp3" as="audio">
+    <link rel="preload" href="../sounds/endgame.mp3" as="audio">
+    <link rel="preload" href="../sounds/gameover.mp3" as="audio">
+    <link rel="preload" href="../sounds/highest.mp3" as="audio">
+    <link rel="preload" href="../sounds/loss.mp3" as="audio">
+</head>
+<body>
+    <div class="mode-selector">
+        <button id="twoPlayerMode" class="mode-btn active">2 Players</button>
+        <button id="threePlayerMode" class="mode-btn">3 Players</button>
+    </div>
+
+    <div class="scoreboard">
+        <div class="scoreboard-header">
+            <h2 id="game-status" class="scoreboard-title">
+                <svg class="trophy-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 3L9 3L9 1L15 1L15 3L12 3M19 5L17 5L17 3L20 3L21.1 13.5C21.1 13.5 19.5 17 12 17C4.5 17 2.9 13.5 2.9 13.5L4 3L7 3L7 5L5 5L4.1 12.5C4.1 12.5 5.5 15 12 15C18.5 15 19.9 12.5 19.9 12.5L19 5M7 5L7 8C7 10.8 9.2 13 12 13C14.8 13 17 10.8 17 8L17 5L7 5M12 23L9.5 19L14.5 19L12 23Z"/>
+                </svg>
+                Game Status
+            </h2>
+        </div>
+
+        <div class="scoreboard-content">
+            <div id="winner" class="winner-announcement">Let's Play!</div>
+
+            <div class="score-display">
+                <div class="score-item">
+                    <div class="score-label">Player</div>
+                    <div class="score-value player-score">0</div>
+                    <div id="userPoints" class="points">Points: 0</div>
+                </div>
+
+                <div class="score-vs">vs</div>
+
+                <div class="score-item">
+                    <div class="score-label">Computer 1</div>
+                    <div class="score-value computer1-score">0</div>
+                    <div id="computer1Points" class="points">Points: 0</div>
+                </div>
+
+                <div id="computer2Container" class="score-item" style="display: none;">
+                    <div class="score-label">Computer 2</div>
+                    <div class="score-value computer2-score">0</div>
+                    <div id="computer2Points" class="points">Points: 0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="result-container">
+            <div class="player-container">
+                <h2>You</h2>
+                <img id="userChoice" src="../images/rockstatic.gif" alt="Player Choice" class="choice-image">
+            </div>
+
+            <div class="player-container">
+                <h2>Computer 1</h2>
+                <img id="computer1Choice" src="../images/rockstatic.gif" alt="Computer 1 Choice" class="choice-image">
+            </div>
+
+            <div id="computer2Container" class="player-container" style="display: none;">
+                <h2>Computer 2</h2>
+                <img id="computer2Choice" src="../images/rockstatic.gif" alt="Computer 2 Choice" class="choice-image">
+            </div>
+        </div>
+
+        <div class="choices">
+            <img src="../images/rockstatic.gif" alt="Rock" class="choice-image" onclick="playGame('rock')">
+            <img src="../images/paperstatic.gif" alt="Paper" class="choice-image" onclick="playGame('paper')">
+            <img src="../images/scissorstatic.gif" alt="Scissors" class="choice-image" onclick="playGame('scissors')">
+        </div>
+
+        <button id="endGameButton" class="end-game-btn">End Game</button>
+    </div>
+
+    <div id="statsScreen" class="stats-screen">
+        <div class="stats-container">
+            <div class="timer" id="countdown">20</div>
+            
+            <h1 class="stats-title">Game Statistics</h1>
+            
+            <div class="stats-content">
+                <div class="stat-item">
+                    <span class="stat-label">Game Duration</span>
+                    <span class="stat-value" id="gameDuration">0:00</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">Rounds Won (Player)</span>
+                    <span class="stat-value" id="totalPlayerWins">0</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">Rounds Won (Computer)</span>
+                    <span class="stat-value" id="totalComputerWins">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/game.js"></script>
+</body>
+</html>
